@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!-- 
+verbose = log level. max=10, min=1 higher the value higher details in 
+	logs. 
+3 threads will be created when specify threads = 3.
+any thread can be picked up by any test.
+
+if 10 tc, 10 threads -> 10 browser launched at the same time. every browser 
+occupy some ram space.
+
+100 tc <-> 100threads- 100 browser launched at the same time
+
+100 tc - 5 threads , in the first run 5 tests will run, similarly in 20 set the entire exceution will be completed.
+
+3 TC <-> 10 threads - 1 set to complete execution, but unnecessary memory and cpu
+usage. its a bad practice.
+
+each thread will occupy 1 core in the cpu.
+if have 6 core, then 6 threads can be created at the same time
+to achieve parallel execution, need multi-core cpu/processor
+
+(Intv -> can single core machine handle multi-threading)
+cannot support multi-threading concept if have one single core,
+first thread will be started and has to complete execution, until 
+then the other threads will be in waiting state and it resumes once the
+first thread is completed execution. hence it becomes sequential execution
+
+
+ideal thread-count should be 7 or less and not more than that.
+
+single machine, 4 to 5. docker container 10 or 20 also will work.
+
+Thread-count no max value, can give any value.
+
+
+
+Ctrl + SHIFT + L which will open a list of all major shortcuts for eclipse.
+
+    ForSingle line comment Ctrl + / (Forwards Slash) and.
+    Single line uncomment Ctrl + \ (Backslash)
+    For Multiline comment Ctrl + Shift + / (Forwards Slash) and.
+    Multiline uncomment Ctrl + Shift + \ (Backslash)
+	--> 
+
+	
+<suite name="TestNG regression Test Suite" parallel ="tests" thread-count="3" verbose="5">
+
+<!-- 	<test name="Google Test">
+		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="url" value="https://www.google.com"></parameter>
+		<classes>
+			<class name="myTests.GoogleTest" />
+		</classes>
+	</test>
+
+	<test name="OrangeHRM Test">
+		<parameter name="browser" value="firefox"></parameter>
+		<parameter name="url"
+			value="https://www.orangehrm.com/orangehrm-30-day-trial"></parameter>
+
+		<classes>
+			<class name="myTests.OrangeHRMTest" />
+		</classes>
+	</test>
+
+	<test name="Amazon App Test">
+		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="url" value="https://www.amazon.com"></parameter>
+
+		<classes>
+			<class name="myTests.AmazonTest" />
+		</classes>
+	</test> -->
+	
+<!-- 		<test name="Open cart Negative Login Test">
+		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="url" value="http://opencart.antropy.co.uk/index.php?route=account/login"></parameter>
+
+		<classes>
+			<class name="myTests.LoginNegativeTest" />
+		</classes>
+	</test> -->
+
+		<test name="Open cart Register Dataprovider Test">
+		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="url" value="https://demo.opencart.com/index.php?route=account/register"></parameter>
+
+		<classes>
+			<class name="myTests.OpenCartRegistrationTest" />
+		</classes>
+	</test>
+</suite>
